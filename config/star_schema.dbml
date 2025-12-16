@@ -1,0 +1,58 @@
+// LOGICAL MODEL (STAR SCHEMA) for "Online Shop" domain
+// Grain: one row per order_item (order_id + product_id)
+
+// -------------------- DIMENSIONS --------------------
+Table dim_client {
+  client_id int [primary key]        // surrogate key from staging (client.clientId)
+  username varchar
+  email varchar
+  contact_address varchar
+}
+
+Table dim_merchant {
+  merchant_id int [primary key]      // surrogate key from staging (merchant.merchantId)
+  storename varchar
+  description varchar
+  email varchar
+  contact_address varchar
+  profit decimal
+}
+
+Table dim_product {
+  product_id int [primary key]       // surrogate key from staging (product.productId)
+  productname varchar
+  description varchar
+}
+
+Table dim_date {
+  date_key int [primary key]
+  full_date date [not null, unique]
+  year int
+  month int
+  day int
+}
+
+// -------------------- FACT --------------------
+Table fact_order_item {
+  // natural uniqueness under chosen grain
+  order_id int [not null]
+  product_id int [not null]
+
+  // foreign keys to dimensions
+  date_key int [not null]
+  client_id int [not null]
+  merchant_id int [not null]
+
+  // measures
+  quantity int [not null]
+
+  Indexes {
+    (order_id, product_id) [pk]
+  }
+}
+
+// -------------------- RELATIONSHIPS --------------------
+Ref: fact_order_item.date_key > dim_date.date_key
+Ref: fact_order_item.client_id > dim_client.client_id
+Ref: fact_order_item.merchant_id > dim_merchant.merchant_id
+Ref: fact_order_item.product_id > dim_product.product_id

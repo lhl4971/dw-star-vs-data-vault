@@ -1,0 +1,49 @@
+// CONCEPTUAL MODEL (domain semantics)
+
+// ---------- Entities ----------
+Table client {
+  clientId integer [primary key]
+  username varchar
+  email varchar
+  contact_address varchar
+}
+
+Table merchant {
+  merchantId integer [primary key]
+  storename varchar
+  description varchar
+  email varchar
+  contact_address varchar
+  profit float
+}
+
+Table product {
+  productId integer [primary key]
+  productname varchar
+  price float
+  stock integer
+  description varchar
+  merchant_id integer
+}
+
+Table orders {
+  orderId integer [primary key]
+  client_id integer
+  order_date timestamp
+}
+
+Table order_item {
+  order_id integer
+  product_id integer
+  quantity integer
+
+  Indexes {
+    (order_id, product_id) [unique]
+  }
+}
+
+// ---------- Relationships (crow's foot via refs) ----------
+Ref: orders.client_id > client.clientId          // Client 1 --- N Orders
+Ref: order_item.order_id > orders.orderId        // Order 1 --- N OrderItem
+Ref: order_item.product_id > product.productId   // Product 1 --- N OrderItem
+Ref: product.merchant_id > merchant.merchantId   // Merchant 1 --- N Product

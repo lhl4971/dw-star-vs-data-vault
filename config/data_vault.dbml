@@ -1,0 +1,157 @@
+// LOGICAL MODEL 2: DATA VAULT
+// Domain: Online Shop
+
+// -------------------- HUBS --------------------
+Table hub_client {
+  hub_client_id bigint [primary key]
+  client_id int [not null, unique]
+  load_dts datetime [not null]
+  record_source varchar [not null]
+}
+
+Table hub_order {
+  hub_order_id bigint [primary key]
+  order_id int [not null, unique]
+  load_dts datetime [not null]
+  record_source varchar [not null]
+}
+
+Table hub_product {
+  hub_product_id bigint [primary key]
+  product_id int [not null, unique]
+  load_dts datetime [not null]
+  record_source varchar [not null]
+}
+
+Table hub_merchant {
+  hub_merchant_id bigint [primary key]
+  merchant_id int [not null, unique]
+  load_dts datetime [not null]
+  record_source varchar [not null]
+}
+
+// -------------------- LINKS --------------------
+Table link_client_order {
+  link_client_order_id bigint [primary key]
+  hub_client_id bigint [not null]
+  hub_order_id bigint [not null]
+  load_dts datetime [not null]
+  record_source varchar [not null]
+
+  Indexes {
+    (hub_client_id, hub_order_id) [unique]
+  }
+}
+
+Table link_order_product {
+  link_order_product_id bigint [primary key]
+  hub_order_id bigint [not null]
+  hub_product_id bigint [not null]
+  load_dts datetime [not null]
+  record_source varchar [not null]
+
+  Indexes {
+    (hub_order_id, hub_product_id) [unique]
+  }
+}
+
+Table link_product_merchant {
+  link_product_merchant_id bigint [primary key]
+  hub_product_id bigint [not null]
+  hub_merchant_id bigint [not null]
+  load_dts datetime [not null]
+  record_source varchar [not null]
+
+  Indexes {
+    (hub_product_id, hub_merchant_id) [unique]
+  }
+}
+
+// -------------------- SATELLITES --------------------
+Table sat_client {
+  hub_client_id bigint [not null]
+  load_dts datetime [not null]
+  record_source varchar [not null]
+
+  username varchar
+  email varchar
+  contact_address varchar
+
+  Indexes {
+    (hub_client_id, load_dts) [unique]
+  }
+}
+
+Table sat_order {
+  hub_order_id bigint [not null]
+  load_dts datetime [not null]
+  record_source varchar [not null]
+
+  order_date datetime
+
+  Indexes {
+    (hub_order_id, load_dts) [unique]
+  }
+}
+
+Table sat_product {
+  hub_product_id bigint [not null]
+  load_dts datetime [not null]
+  record_source varchar [not null]
+
+  productname varchar
+  description varchar
+  price decimal
+  stock int
+
+  Indexes {
+    (hub_product_id, load_dts) [unique]
+  }
+}
+
+Table sat_merchant {
+  hub_merchant_id bigint [not null]
+  load_dts datetime [not null]
+  record_source varchar [not null]
+
+  storename varchar
+  description varchar
+  email varchar
+  contact_address varchar
+  profit decimal
+
+  Indexes {
+    (hub_merchant_id, load_dts) [unique]
+  }
+}
+
+Table sat_order_product {
+  link_order_product_id bigint [not null]
+  load_dts datetime [not null]
+  record_source varchar [not null]
+
+  quantity int
+  unit_price decimal
+  amount decimal
+
+  Indexes {
+    (link_order_product_id, load_dts) [unique]
+  }
+}
+
+// -------------------- REFERENCES --------------------
+Ref: link_client_order.hub_client_id > hub_client.hub_client_id
+Ref: link_client_order.hub_order_id > hub_order.hub_order_id
+
+Ref: link_order_product.hub_order_id > hub_order.hub_order_id
+Ref: link_order_product.hub_product_id > hub_product.hub_product_id
+
+Ref: link_product_merchant.hub_product_id > hub_product.hub_product_id
+Ref: link_product_merchant.hub_merchant_id > hub_merchant.hub_merchant_id
+
+Ref: sat_client.hub_client_id > hub_client.hub_client_id
+Ref: sat_order.hub_order_id > hub_order.hub_order_id
+Ref: sat_product.hub_product_id > hub_product.hub_product_id
+Ref: sat_merchant.hub_merchant_id > hub_merchant.hub_merchant_id
+
+Ref: sat_order_product.link_order_product_id > link_order_product.link_order_product_id
