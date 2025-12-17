@@ -1,0 +1,10 @@
+table_name	rows_cnt
+dim_client	9149
+dim_merchant	2
+dim_product	7195
+dim_date	91
+fact_order_item	128968
+
+real	0m2.590s
+user	0m0.031s
+sys	0m0.012s

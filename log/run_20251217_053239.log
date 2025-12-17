@@ -1,0 +1,35 @@
+=== RUN START: 20251217_053239 ===
+Host: 127.0.0.1  Port: 3306  User: root
+SQL_DIR: /Users/liuhailin/codes/sql/sql
+LOG_DIR: /Users/liuhailin/codes/sql/log
+
+MySQL password will be requested once per script execution.
+----- RUN: staging/create_dw_lab.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_053239_staging/create_dw_lab.log
+DONE: staging/create_dw_lab.sql
+
+----- RUN: staging/load_staging.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_053239_staging/load_staging.log
+DONE: staging/load_staging.sql
+
+----- RUN: star_schema/create_star_schema.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_053239_star_schema/create_star_schema.log
+DONE: star_schema/create_star_schema.sql
+
+----- RUN: star_schema/load_star_schema.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_053239_star_schema/load_star_schema.log
+DONE: star_schema/load_star_schema.sql
+
+----- RUN: data_vault/create_data_vault.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_053239_data_vault/create_data_vault.log
+DONE: data_vault/create_data_vault.sql
+
+----- RUN: data_vault/load_data_vault.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_053239_data_vault/load_data_vault.log
+DONE: data_vault/load_data_vault.sql
+
+----- RUN: data_vault/create_dv_view.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_053239_data_vault/create_dv_view.log
+DONE: data_vault/create_dv_view.sql
+
+=== RUN END: 20251217_053253 ===

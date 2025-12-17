@@ -45,6 +45,7 @@ Table fact_order_item {
 
   // measures
   quantity int [not null]
+  amount decimal [not null, note: 'Derived measure: quantity * unit_price']
 
   Indexes {
     (order_id, product_id) [pk]

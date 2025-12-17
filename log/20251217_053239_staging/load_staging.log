@@ -1,0 +1,10 @@
+table_name	rows_cnt
+client	9149
+merchant	2
+product	7195
+orders	120378
+order_item	128968
+
+real	0m2.203s
+user	0m0.030s
+sys	0m0.010s
