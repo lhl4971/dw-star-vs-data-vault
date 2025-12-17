@@ -1,0 +1,7 @@
+storename	orders_cnt	units	gmv
+Amazon	97043	197296	55186838.56
+Merchant	25161	48328	12495509.13
+
+real	0m1.497s
+user	0m0.028s
+sys	0m0.010s

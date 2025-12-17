@@ -1,0 +1,67 @@
+=== RUN START: 20251217_054846 ===
+Host: 127.0.0.1  Port: 3306  User: root
+SQL_DIR: /Users/liuhailin/codes/sql/sql
+LOG_DIR: /Users/liuhailin/codes/sql/log
+
+MySQL password will be requested once per script execution.
+----- RUN: unit_test/dw_lab_1.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_054846_unit_test/dw_lab_1.log
+DONE: unit_test/dw_lab_1.sql
+
+----- RUN: unit_test/dw_lab_2.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_054846_unit_test/dw_lab_2.log
+DONE: unit_test/dw_lab_2.sql
+
+----- RUN: unit_test/dw_lab_3.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_054846_unit_test/dw_lab_3.log
+DONE: unit_test/dw_lab_3.sql
+
+----- RUN: unit_test/dw_lab_4.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_054846_unit_test/dw_lab_4.log
+DONE: unit_test/dw_lab_4.sql
+
+----- RUN: unit_test/dw_lab_5.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_054846_unit_test/dw_lab_5.log
+DONE: unit_test/dw_lab_5.sql
+
+----- RUN: unit_test/dw_star_1.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_054846_unit_test/dw_star_1.log
+DONE: unit_test/dw_star_1.sql
+
+----- RUN: unit_test/dw_star_2.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_054846_unit_test/dw_star_2.log
+DONE: unit_test/dw_star_2.sql
+
+----- RUN: unit_test/dw_star_3.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_054846_unit_test/dw_star_3.log
+DONE: unit_test/dw_star_3.sql
+
+----- RUN: unit_test/dw_star_4.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_054846_unit_test/dw_star_4.log
+DONE: unit_test/dw_star_4.sql
+
+----- RUN: unit_test/dw_star_5.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_054846_unit_test/dw_star_5.log
+DONE: unit_test/dw_star_5.sql
+
+----- RUN: unit_test/dw_dv_1.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_054846_unit_test/dw_dv_1.log
+DONE: unit_test/dw_dv_1.sql
+
+----- RUN: unit_test/dw_dv_2.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_054846_unit_test/dw_dv_2.log
+DONE: unit_test/dw_dv_2.sql
+
+----- RUN: unit_test/dw_dv_3.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_054846_unit_test/dw_dv_3.log
+DONE: unit_test/dw_dv_3.sql
+
+----- RUN: unit_test/dw_dv_4.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_054846_unit_test/dw_dv_4.log
+DONE: unit_test/dw_dv_4.sql
+
+----- RUN: unit_test/dw_dv_5.sql -----
+Output -> /Users/liuhailin/codes/sql/log/20251217_054846_unit_test/dw_dv_5.log
+DONE: unit_test/dw_dv_5.sql
+
+=== RUN END: 20251217_054904 ===
